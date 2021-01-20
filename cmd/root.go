@@ -4,7 +4,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
+	"github.com/mhristof/checkov2vim/checkov"
 	"github.com/mhristof/checkov2vim/log"
 	"github.com/spf13/cobra"
 )
@@ -18,15 +20,7 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		Verbose(cmd)
 
-		scanner := bufio.NewScanner(os.Stdin)
-		for scanner.Scan() {
-			fmt.Println(scanner.Text())
-		}
-
-		if scanner.Err() != nil {
-			return
-		}
-
+		fmt.Println(strings.Join(checkov.ToVim(bufio.NewScanner(os.Stdin)), "\n"))
 	},
 }
 
