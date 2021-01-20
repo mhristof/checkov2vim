@@ -19,12 +19,12 @@ func TestStuff(t *testing.T) {
 			name: "single error",
 			errors: heredoc.Doc(`
 				Check: CKV_AWS_8: "Ensure all data stored in the Launch configuration EBS is securely encrypted"
-					FAILED for resource: aws_instance.sonarqube
-					File: /sonarqube.tf:95-126
+					FAILED for resource: aws_instance.main
+					File: /main.tf:95-126
 					Guide: https://docs.bridgecrew.io/docs/general_13
 			`),
 			exp: []string{
-				"sonarqube.tf:95: CKV_AWS_8 Ensure all data stored in the Launch configuration EBS is securely encrypted https://docs.bridgecrew.io/docs/general_13",
+				"main.tf:95: CKV_AWS_8 Ensure all data stored in the Launch configuration EBS is securely encrypted https://docs.bridgecrew.io/docs/general_13",
 			},
 		},
 		{
@@ -32,13 +32,13 @@ func TestStuff(t *testing.T) {
 			errors: heredoc.Doc(`
 				Check: CKV_AWS_2: "Ensure ALB protocol is HTTPS"
 					PASSED for resource: aws_lb_listener.ecs_https
-					File: /modules/ecs-cluster/alb.tf:45-61
-					Variable alb_ssl_policy (of /modules/ecs-cluster/variables.tf) evaluated to value "ELBSecurityPolicy-FS-1-2-Res-2019-08" in expression: ssl_policy = ${var.alb_ssl_policy}
+					File: /modules/awesome/alb.tf:45-61
+					Variable alb_ssl_policy (of /modules/awesome/variables.tf) evaluated to value "ELBSecurityPolicy-FS-1-2-Res-2019-08" in expression: ssl_policy = ${var.alb_ssl_policy}
 					Guide: https://docs.bridgecrew.io/docs/networking_29
 
 				Check: CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled"
-					FAILED for resource: aws_instance.sonarqube
-					File: /sonarqube.tf:95-126
+					FAILED for resource: aws_instance.main
+					File: /main.tf:95-126
 					Guide: https://docs.bridgecrew.io/docs/bc_aws_general_31
 			`),
 			exp: []string{
