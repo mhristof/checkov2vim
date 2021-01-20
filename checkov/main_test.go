@@ -42,7 +42,7 @@ func TestStuff(t *testing.T) {
 					Guide: https://docs.bridgecrew.io/docs/bc_aws_general_31
 			`),
 			exp: []string{
-				"sonarqube.tf:95: CKV_AWS_79 Ensure Instance Metadata Service Version 1 is not enabled https://docs.bridgecrew.io/docs/bc_aws_general_31",
+				"main.tf:95: CKV_AWS_79 Ensure Instance Metadata Service Version 1 is not enabled https://docs.bridgecrew.io/docs/bc_aws_general_31",
 			},
 		},
 	}
